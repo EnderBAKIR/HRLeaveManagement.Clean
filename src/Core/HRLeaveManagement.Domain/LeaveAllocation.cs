@@ -1,8 +1,10 @@
-﻿namespace HRLeaveManagement.Domain
+﻿using HRLeaveManagement.Domain.Common;
+
+namespace HRLeaveManagement.Domain
 {
-    public class LeaveAllocation
+    public class LeaveAllocation : BaseEntity
     {
-        public int Id { get; set; }
+        
         public int NumberOfDays { get; set; }
 
         public LeaveType? LeaveType { get; set; }

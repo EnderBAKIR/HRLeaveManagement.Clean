@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using HRLeaveManagement.Domain.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRLeaveManagement.Domain
 {
-    public class LeaveRequest
+    public class LeaveRequest : BaseEntity
     {
-        public int Id { get; set; }
+        
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
