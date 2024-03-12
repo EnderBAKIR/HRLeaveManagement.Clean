@@ -16,4 +16,5 @@ namespace HRLeaveManagement.Application.Contracts.Persistence
         Task DeleteAsync(T entity);
 
     }
+
 }
