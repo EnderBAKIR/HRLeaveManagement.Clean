@@ -27,8 +27,8 @@ namespace HRLeaveManagement.Application.Features.LeaveRequest.Commands.UpdateLea
             _leaveRequestRepository = leaveRequestRepository;
             _leaveTypeRepository = leaveTypeRepository;
             _mapper = mapper;
-            this._emailSender = emailSender;
-            this._appLogger = appLogger;
+            _emailSender = emailSender;
+            _appLogger = appLogger;
         }
 
         public async Task<Unit> Handle(UpdateLeaveRequestCommand request, CancellationToken cancellationToken)
