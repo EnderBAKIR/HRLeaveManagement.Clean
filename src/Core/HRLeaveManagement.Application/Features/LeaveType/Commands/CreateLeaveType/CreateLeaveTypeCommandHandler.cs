@@ -24,9 +24,11 @@ namespace HRLeaveManagement.Application.Features.LeaveType.Commands.CreateLeaveT
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Any())
+            {
                 throw new BadRequestException("Invalid LeaveType", validationResult);
+            }
 
-            
+
 
 
             var leaveTpyeToCreate = _mapper.Map<Domain.LeaveType>(request);
