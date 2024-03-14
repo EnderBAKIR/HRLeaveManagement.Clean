@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\LeaveRequest\Commands\" />
     <Folder Include="Features\LeaveRequest\Queries\" />
   </ItemGroup>
 
