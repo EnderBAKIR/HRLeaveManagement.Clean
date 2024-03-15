@@ -1,5 +1,6 @@
 using HRLeaveManagement.BlazorUI.Components;
 using HRLeaveManagement.BlazorUI.Contracts;
+using HRLeaveManagement.BlazorUI.Services;
 using HRLeaveManagement.BlazorUI.Services.Base;
 using System.Reflection;
 
