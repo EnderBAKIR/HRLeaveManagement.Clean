@@ -1,6 +1,6 @@
 ﻿namespace HRLeaveManagement.BlazorUI.Contracts
 {
-    public class ILeaveRequestService
+    public interface ILeaveRequestService
     {
     }
 }
