@@ -1,37 +1,81 @@
-﻿using HRLeaveManagement.BlazorUI.Contracts;
+﻿using AutoMapper;
+using HRLeaveManagement.BlazorUI.Contracts;
 using HRLeaveManagement.BlazorUI.Models.LeaveTypes;
 
 namespace HRLeaveManagement.BlazorUI.Services.Base
 {
     public class LeaveTypeService : BaseHttpService, ILeaveTypeService
     {
-        public LeaveTypeService(IClient client) : base(client)
+        private readonly IMapper _mapper;
+
+        public LeaveTypeService(IClient client, IMapper mapper) : base(client)
         {
+            this._mapper = mapper;
         }
 
-        public Task<Response<Guid>> CreateLeaveType(LeaveTypeViewModel leaveType)
+        public async Task<Response<Guid>> CreateLeaveType(LeaveTypeViewModel leaveType)
         {
-            throw new NotImplementedException();
+            try
+            {
+                
+                var createLeaveTypeCommand = _mapper.Map<CreateLeaveTypeCommand>(leaveType);
+                await _client.LeaveTypesPOSTAsync(createLeaveTypeCommand);
+                return new Response<Guid>()
+                {
+                    Success = true,
+                };
+            }
+            catch (ApiException ex)
+            {
+
+                return ConvertApiExceptions<Guid>(ex);
+            }
         }
 
-        public Task<Response<Guid>> DeleteLeaveType(int id)
+        public async Task<Response<Guid>> DeleteLeaveType(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                
+                await _client.LeaveTypesDELETEAsync(id);
+                return new Response<Guid>() { Success = true };
+            }
+            catch (ApiException ex)
+            {
+                return ConvertApiExceptions<Guid>(ex);
+            }
         }
 
-        public Task<LeaveTypeViewModel> GetLeaveTypeDetails(int id)
+        public async Task<LeaveTypeViewModel> GetLeaveTypeDetails(int id)
         {
-            throw new NotImplementedException();
+            
+            var leaveType = await _client.LeaveTypesGETAsync(id);
+            return _mapper.Map<LeaveTypeViewModel>(leaveType);
         }
 
-        public Task<List<LeaveTypeViewModel>> GetLeaveTypes()
+        public async Task<List<LeaveTypeViewModel>> GetLeaveTypes()
         {
-            throw new NotImplementedException();
+            
+            var leaveTypes = await _client.LeaveTypesAllAsync();
+            return _mapper.Map<List<LeaveTypeViewModel>>(leaveTypes);
         }
 
-        public Task<Response<Guid>> UpdateLeaveType(int id, LeaveTypeViewModel leaveType)
+        public async Task<Response<Guid>> UpdateLeaveType(int id, LeaveTypeViewModel leaveType)
         {
-            throw new NotImplementedException();
+            try
+            {
+                
+                var updateLeaveTypeCommand = _mapper.Map<UpdateLeaveTypeCommand>(leaveType);
+                await _client.LeaveTypesPUTAsync(id.ToString(), updateLeaveTypeCommand);
+                return new Response<Guid>()
+                {
+                    Success = true,
+                };
+            }
+            catch (ApiException ex)
+            {
+                return ConvertApiExceptions<Guid>(ex);
+            }
         }
     }
 

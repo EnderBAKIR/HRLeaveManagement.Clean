@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HRLeaveManagement.BlazorUI.Models.LeaveTypes;
+using System.ComponentModel.DataAnnotations;
 
 namespace HRLeaveManagement.BlazorUI.Models.LeaveRequests
 {
@@ -16,8 +17,8 @@ namespace HRLeaveManagement.BlazorUI.Models.LeaveRequests
         public bool? Approved { get; set; }
 
         public bool Cancelled { get; set; }
-        public LeaveTypeVM LeaveType { get; set; }
-        public EmployeeVM Employee { get; set; }
+        public LeaveTypeViewModel LeaveType { get; set; }
+        public EmployeeViewModel Employee { get; set; }
 
         [Display(Name = "Start Date")]
         [Required]
