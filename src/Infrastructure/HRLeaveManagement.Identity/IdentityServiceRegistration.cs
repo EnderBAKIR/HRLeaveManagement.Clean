@@ -24,7 +24,7 @@ namespace HRLeaveManagement.Identity
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
             services.AddDbContext<HrLeaveManagementIdentityDbContext>(options =>
-               options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString")));
+               options.UseSqlServer(configuration.GetConnectionString("HRDatabaseSqlConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<HrLeaveManagementIdentityDbContext>().AddDefaultTokenProviders();
